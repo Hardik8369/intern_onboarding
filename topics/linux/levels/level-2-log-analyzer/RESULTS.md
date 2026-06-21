@@ -1,33 +1,17 @@
-# Results — Linux (Shell Log Analyzer)
-
-Intern fills this in. See [../../../../HOW_IT_WORKS.md](../../../../HOW_IT_WORKS.md) for the workflow.
+# Results — Linux Level 2 (Shell Log Analyzer)
 
 ## Constraint results
 
-| Constraint | Result | Evidence (what you observed) |
-|------------|--------|------------------------------|
-| C1         |        |                              |
-| C2         |        |                              |
-| C3         |        |                              |
-| C4         |        |                              |
-| C5         |        |                              |
-| C6         |        |                              |
-| C7         |        |                              |
-| C8         |        |                              |
-
-- `Result` is `PASS` or `FAIL` only.
-- `Evidence` is specific: the command you ran and what you saw. "Works" is not evidence.
-  Example: "C4 — script top 3 IPs match `awk \| sort \| uniq -c \| sort -rn \| head -3`
-  exactly."
+| Constraint | Result | Evidence |
+|------------|--------|----------|
+| C1 | PASS | ./analyze.sh sample-access.log → prints all 4 sections |
+| C2 | PASS | ./analyze.sh → Usage: ./analyze.sh <logfile> [N] |
+| C3 | PASS | ./analyze.sh sample-access.log → exactly 5 IPs listed |
+| C4 | PASS | top 3 IPs match independent awk check: 203.0.113.7 142, 198.51.100.23 98, 192.0.2.88 71 |
+| C5 | PASS | 4xx errors: 85, 5xx errors: 36 match independent awk check |
+| C6 | PASS | busiest hour 14:00 count 137 matches independent check |
+| C7 | PASS | total 526 matches wc -l |
+| C8 | PASS | ./analyze.sh does-not-exist.log 5 → Error: file not found |
 
 ## Overall
-
-Delete whichever doesn't apply:
-
-- ✅ **CLEARED** — all constraints pass. Topic complete. Skipping `resources.md`.
-- ❌ **Not cleared** — constraints above marked FAIL. Reviewing `resources.md`, will
-  retry and update this file.
-
-## Notes (optional)
-
-<Any blockers, assumptions you made, or follow-ups.>
+✅ CLEARED — all constraints pass. Linux Level 2 complete.
