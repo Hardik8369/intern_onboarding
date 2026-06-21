@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """File organizer — sorts files into subdirectories by extension category."""
-
 import argparse
 import os
 import shutil
@@ -25,13 +24,7 @@ EXTENSION_MAP = {
     ".css": "code", ".java": "code",
 }
 
-
 def parse_args():
-    """Parse command-line arguments.
-
-    Returns:
-        argparse.Namespace: parsed arguments with `directory` and `dry_run` attributes.
-    """
     parser = argparse.ArgumentParser(
         description="Organize files in a directory into subdirectories by extension."
     )
@@ -44,47 +37,53 @@ def parse_args():
     )
     return parser.parse_args()
 
-
 def categorize(filename):
-    """Determine the category for a file based on its extension.
-
-    Args:
-        filename (str): the file name (e.g., "photo.jpg").
-
-    Returns:
-        str: the category name (e.g., "images"), or None if the extension is unknown.
-    """
-    # TODO: implement
-    pass
-
+    _, ext = os.path.splitext(filename)
+    return EXTENSION_MAP.get(ext.lower())
 
 def create_category_dirs(base_dir, categories):
-    """Create subdirectories for each category that doesn't already exist.
-
-    Args:
-        base_dir (str): the base directory path.
-        categories (set): a set of category names to create.
-    """
-    # TODO: implement
-    pass
-
+    for category in categories:
+        os.makedirs(os.path.join(base_dir, category), exist_ok=True)
 
 def organize_files(directory, dry_run=False):
-    """Scan the directory and move files into category subdirectories.
+    if not os.path.isdir(directory):
+        print(f"Error: '{directory}' is not a valid directory.")
+        sys.exit(1)
 
-    Args:
-        directory (str): the directory to organize.
-        dry_run (bool): if True, print actions without moving files.
-    """
-    # TODO: implement
-    pass
+    files = [f for f in os.listdir(directory)
+             if os.path.isfile(os.path.join(directory, f))]
 
+    if not files:
+        print("No files to organize.")
+        return
+
+    categories = set()
+    file_categories = {}
+    for filename in files:
+        category = categorize(filename)
+        if category is None:
+            category = "other"
+        categories.add(category)
+        file_categories[filename] = category
+
+    if not dry_run:
+        create_category_dirs(directory, categories)
+
+    for filename, category in file_categories.items():
+        src = os.path.join(directory, filename)
+        dst = os.path.join(directory, category, filename)
+        if dry_run:
+            print(f"[dry-run] Would move: {filename} → {category}/")
+        else:
+            if os.path.exists(dst):
+                print(f"Skipping {filename}: already exists in {category}/")
+            else:
+                shutil.move(src, dst)
+                print(f"Moved: {filename} → {category}/")
 
 def main():
-    """Entry point: parse args and run the organizer."""
-    # TODO: implement
-    pass
-
+    args = parse_args()
+    organize_files(args.directory, args.dry_run)
 
 if __name__ == "__main__":
     main()

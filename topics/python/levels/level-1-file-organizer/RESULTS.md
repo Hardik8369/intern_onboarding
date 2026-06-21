@@ -1,30 +1,16 @@
-# Results — Level 1 (File Organizer CLI)
-
-Intern fills this in. See [../../../../HOW_IT_WORKS.md](../../../../HOW_IT_WORKS.md) for the workflow.
+# Results — Python Level 1 (File Organizer CLI)
 
 ## Constraint results
 
-| Constraint | Result | Evidence (command + what you saw) |
-|------------|--------|-----------------------------------|
-| C1         |        |                                   |
-| C2         |        |                                   |
-| C3         |        |                                   |
-| C4         |        |                                   |
-| C5         |        |                                   |
-| C6         |        |                                   |
-| C7         |        |                                   |
-
-- `Result` is `PASS` or `FAIL` only.
-- `Evidence` is specific: paste the command and what it printed.
+| Constraint | Result | Evidence |
+|------------|--------|----------|
+| C1 | PASS | python3 organize.py --help → shows --directory and --dry-run |
+| C2 | PASS | python3 organize.py → error: --directory required, exits non-zero |
+| C3 | PASS | ls /tmp/test-organize/ → archives, data, docs, images created |
+| C4 | PASS | all 4 files moved to correct category subdirectories |
+| C5 | PASS | python3 organize.py --directory /tmp/test-empty → No files to organize. |
+| C6 | PASS | categorize, create_category_dirs, organize_files all have real logic |
+| C7 | PASS | images=3, docs=3, data=2, archives=2, root remaining=0 |
 
 ## Overall
-
-Delete whichever doesn't apply:
-
-- ✅ **CLEARED** — all constraints pass. Python topic complete.
-- ❌ **Not cleared** — constraints above marked FAIL. Reviewing
-  [../../../resources.md](../../../resources.md), will retry and update this file.
-
-## Notes (optional)
-
-<Any blockers, assumptions you made, or follow-ups.>
+✅ CLEARED — all constraints pass. Python Level 1 complete.
