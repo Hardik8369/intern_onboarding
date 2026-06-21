@@ -1,0 +1,17 @@
+{
+  "departments": {
+    "Engineering": {
+      "avg_salary": 80000.0,
+      "count": 1
+    },
+    "Sales": {
+      "avg_salary": 70000.0,
+      "count": 1
+    }
+  },
+  "highest_paid": {
+    "name": "Good User",
+    "salary": 80000
+  },
+  "total_employees": 2
+}
