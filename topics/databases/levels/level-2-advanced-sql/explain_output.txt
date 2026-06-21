@@ -1,0 +1,4 @@
+QUERY PLAN
+`--SEARCH tasks USING INDEX idx_tasks_project_id (project_id=?)
+QUERY PLAN
+`--SEARCH tasks USING INDEX idx_tasks_status (status=?)
