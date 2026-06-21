@@ -1,31 +1,16 @@
-# Results — Level 2 (Collaboration & Merge Conflicts)
-
-Intern fills this in. See [../../../../HOW_IT_WORKS.md](../../../../HOW_IT_WORKS.md) for the workflow.
+# Results — Git Level 2 (Collaboration & Merge Conflicts)
 
 ## Constraint results
 
-| Constraint | Result | Evidence (command + what you saw) |
-|------------|--------|-----------------------------------|
-| C1         |        |                                   |
-| C2         |        |                                   |
-| C3         |        |                                   |
-| C4         |        |                                   |
-| C5         |        |                                   |
-| C6         |        |                                   |
-| C7         |        |                                   |
-
-- `Result` is `PASS` or `FAIL` only.
-- `Evidence` is specific: paste the command and what it printed. Example: "C2 —
-  `grep -rn '<<<<<<<' . --include='*.py' --include='*.md'` → no output (0 matches)."
+| Constraint | Result | Evidence |
+|------------|--------|----------|
+| C1 | PASS | ls app.py notes/shared.md → both files exist, committed on main |
+| C2 | PASS | grep conflict markers → no output (no markers remain) |
+| C3 | PASS | git log → resolve merge conflict: combine greeting changes from both branches |
+| C4 | PASS | git log --merges → merge feature/improve-greeting into main |
+| C5 | PASS | python3 app.py → Hello from feature branch and the team! |
+| C6 | PASS | git log --oneline --all → all messages are meaningful |
+| C7 | PASS | git log --graph → shows fork and join collaboration pattern |
 
 ## Overall
-
-Delete whichever doesn't apply:
-
-- ✅ **CLEARED** — all constraints pass. Git topic complete.
-- ❌ **Not cleared** — constraints above marked FAIL. Reviewing
-  [../../../resources.md](../../../resources.md), will retry and update this file.
-
-## Notes (optional)
-
-<Any blockers, assumptions you made, or follow-ups.>
+✅ CLEARED — all constraints pass. Git Level 2 complete. Git topic fully cleared!
