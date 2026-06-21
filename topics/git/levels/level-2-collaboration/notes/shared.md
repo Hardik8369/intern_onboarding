@@ -9,3 +9,6 @@ Your job: resolve the conflict, keeping both sets of changes.
 
 ## Important
 Do not delete this file. It's central to the conflict exercise.
+
+## Team Update
+Team member updated this file.
