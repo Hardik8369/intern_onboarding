@@ -85,10 +85,7 @@ def test_divide_by_zero():
 # --- percentage() tests ---
 
 def test_percentage_basic():
-    # BUG 2: percentage uses wrong formula (multiply instead of divide)
-    # BUGGY TEST: expected value assumes the WRONG formula
-    # Intern should fix this test to check the CORRECT formula
-    assert percentage(25, 200) == 50.0  # WRONG expected value — should be 12.5
+    assert percentage(25, 200) == 12.5  
 
 
 # --- format_result() tests ---
