@@ -1,27 +1,17 @@
-# Results — Level 1 (REST API)
+# Results — HTTP API Level 1 (REST API)
 
-Record your constraint results here. See [../../../../HOW_IT_WORKS.md](../../../../HOW_IT_WORKS.md)
-for instructions on how to self-report.
+## Constraint results
 
-For each constraint, start your Flask app (`python3 app.py`), then run the verification command
-from [constraints.md](constraints.md) in a second terminal. Record what you observed.
-
-| Constraint | Result | Evidence (command + what you observed) |
-|------------|--------|--------------------------------------|
-| C1: POST creates a bookmark | | |
-| C2: GET all returns list | | |
-| C3: GET single by ID | | |
-| C4: GET nonexistent returns 404 | | |
-| C5: PUT updates bookmark | | |
-| C6: DELETE removes bookmark | | |
-| C7: GET all reflects changes | | |
-| C8: Valid JSON responses | | |
+| Constraint | Result | Evidence |
+|------------|--------|----------|
+| C1 | PASS | POST /bookmarks → Google bookmark created, HTTP 201 |
+| C2 | PASS | GET /bookmarks → JSON array with bookmark, HTTP 200 |
+| C3 | PASS | GET /bookmarks/1 → bookmark with id:1, HTTP 200 |
+| C4 | PASS | GET /bookmarks/999 → error message, HTTP 404 |
+| C5 | PASS | PUT /bookmarks/2 → GitHub Updated with tags, HTTP 200 |
+| C6 | PASS | DELETE /bookmarks/2 → HTTP 204, then GET returns 404 |
+| C7 | PASS | GET /bookmarks → length=1, only Google remains |
+| C8 | PASS | both GET /bookmarks and GET /bookmarks/1 return Valid JSON |
 
 ## Overall
-
-- [ ] **CLEARED** — all constraints pass. HTTP-API topic complete.
-- [ ] **Not cleared** — constraints above marked FAIL. Reviewing [../../../resources.md](../../../resources.md), will retry.
-
-## Notes (optional)
-
-Anything you want to note for yourself or your reviewer — blockers, assumptions, things you learned.
+✅ CLEARED — all constraints pass. HTTP API Level 1 complete.
