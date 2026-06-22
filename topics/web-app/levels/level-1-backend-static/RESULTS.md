@@ -1,26 +1,16 @@
-# Results — Level 1 (Backend + Static HTML)
+# Results — Web App Level 1 (Backend + Static HTML)
 
-Record your constraint results here. See [../../../../HOW_IT_WORKS.md](../../../../HOW_IT_WORKS.md)
-for instructions on how to self-report.
+## Constraint results
 
-For each constraint, start your Flask app (`python3 app.py`), then run the verification command
-from [constraints.md](constraints.md) in a second terminal. Record what you observed.
-
-| Constraint | Result | Evidence (command + what you observed) |
-|------------|--------|--------------------------------------|
-| C1: Home page loads | | |
-| C2: Can submit entry via POST | | |
-| C3: Multiple entries persist | | |
-| C4: File structure correct | | |
-| C5: Jinja2 template syntax | | |
-| C6: Entries show name + message | | |
-| C7: CSS linked and served | | |
+| Constraint | Result | Evidence |
+|------------|--------|----------|
+| C1 | PASS | GET / → HTTP 200, HTML with form and guestbook |
+| C2 | PASS | POST / → HTTP 302 redirect, Alice appears on page |
+| C3 | PASS | Alice, Bob, Carol all visible on same page |
+| C4 | PASS | ls -R → app.py, templates/index.html, static/style.css |
+| C5 | PASS | grep Jinja2 → {{ }}, {% %} found at multiple lines |
+| C6 | PASS | each entry shows name and message separately |
+| C7 | PASS | link tag in HTML, curl /static/style.css → CSS content |
 
 ## Overall
-
-- [ ] **CLEARED** — all constraints pass. Web App topic complete.
-- [ ] **Not cleared** — constraints above marked FAIL. Reviewing [../../../resources.md](../../../resources.md), will retry.
-
-## Notes (optional)
-
-Anything you want to note for yourself or your reviewer — blockers, assumptions, things you learned.
+✅ CLEARED — all constraints pass. Web App Level 1 complete.
