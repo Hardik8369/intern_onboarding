@@ -1,28 +1,16 @@
-# Results — Level 2 (TDD with AI)
+# Results — Vibe Coding Level 2 (TDD with AI)
 
-Record your constraint results here. See [../../../../HOW_IT_WORKS.md](../../../../HOW_IT_WORKS.md)
-for instructions on how to self-report.
+## Constraint Results
 
-For each constraint, run the verification command from [constraints.md](constraints.md), observe
-the result, and record it here.
-
-| Constraint | Result | Evidence (command + what you observed) |
-|------------|--------|--------------------------------------|
-| C1: All tests pass | | |
-| C2: At least 10 tests | | |
-| C3: Tests cover major features | | |
-| C4: PROMPT_LOG documents TDD | | |
-| C5: Tool works as CLI | | |
-| C6: HTML output correct | | |
-| C7: Test-first process | | |
+| Constraint | Result | Evidence |
+|------------|--------|----------|
+| C1 | PASS | pytest test_md2html.py -v → 14 passed, 0 failed, 0 errors |
+| C2 | PASS | pytest --collect-only → 14 tests collected, covering 6 features |
+| C3 | PASS | grep "def test_" → headings, bold/italic, inline code, lists, links, paragraphs, code blocks, edge cases |
+| C4 | PASS | PROMPT_LOG.md has 4 TDD cycles, each showing test written first, RED run, AI prompt, GREEN result |
+| C5 | PASS | python3 md2html.py --help → shows usage. Converts sample md files without errors |
+| C6 | PASS | Output contains h1, strong, em, li tags for corresponding markdown input |
+| C7 | PASS | PROMPT_LOG.md shows tests written before implementation — Cycle 1 shows ModuleNotFoundError proving md2html.py did not exist when tests were first run |
 
 ## Overall
-
-- [ ] **CLEARED** — all constraints pass. Vibe Coding topic complete.
-- [ ] **Not cleared** — constraints above marked FAIL. Reviewing [../../../resources.md](../../../resources.md), will retry.
-
-## Notes (optional)
-
-AI tool used: _______________________________________
-AI tool used for review (if applicable): _______________________________________
-Anything else you want to note.
+✅ CLEARED — all 7 constraints pass. Vibe Coding Level 2 complete.
