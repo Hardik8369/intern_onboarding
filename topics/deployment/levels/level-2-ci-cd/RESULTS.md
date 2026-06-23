@@ -1,29 +1,19 @@
-# Results — Level 2 (CI/CD)
+# Results — Deployment Level 2 (CI/CD)
 
-Record your constraint results here. See [../../../../HOW_IT_WORKS.md](../../../../HOW_IT_WORKS.md)
-for instructions on how to self-report.
+## Constraint results
 
-For each constraint, observe the GitHub Actions output and/or run curl commands against your
-deployed URL. Record what you observed.
+| Constraint | Result | Evidence |
+|------------|--------|----------|
+| C1 | PASS | .github/workflows/deploy.yml exists with name, on, jobs, steps |
+| C2 | PASS | 3 green workflow runs triggered by push to main |
+| C3 | PASS | docker build --build-arg COMMIT_HASH=${{ github.sha }} |
+| C4 | PASS | curl /health → HTTP 200, {"status":"ok"} |
+| C5 | PASS | /version → c357f7e41580afa33442b24fccc1e2b0b3cfc07e matches git rev-parse HEAD |
+| C6 | PASS | no hardcoded secrets in workflow file |
+| C7 | PASS | 5 steps: Checkout, Setup Buildx, Build, Verify, Deploy complete |
 
-| Constraint | Result | Evidence (command + what you observed) |
-|------------|--------|--------------------------------------|
-| C1: Workflow file exists | | |
-| C2: Workflow triggers on push | | |
-| C3: Docker build uses commit hash | | |
-| C4: App deployed and accessible | | |
-| C5: /version shows commit hash | | |
-| C6: No hardcoded secrets | | |
-| C7: Multiple meaningful steps | | |
+## Public URL
+https://my-ci-cd-deploy-production.up.railway.app
 
 ## Overall
-
-- [ ] **CLEARED** — all constraints pass. Deployment topic complete.
-- [ ] **Not cleared** — constraints above marked FAIL. Reviewing [../../../resources.md](../../../resources.md), will retry.
-
-## Notes (optional)
-
-Your Railway URL: _______________________________________
-Your GitHub repo URL: _______________________________________
-Latest commit hash: _______________________________________
-Anything else you want to note.
+✅ CLEARED — all constraints pass. Deployment Level 2 complete. Deployment topic fully cleared!
