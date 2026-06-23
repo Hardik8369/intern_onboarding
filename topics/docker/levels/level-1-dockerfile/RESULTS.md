@@ -1,25 +1,15 @@
-# Results — Level 1 (Dockerfile Basics)
+# Results — Docker Level 1 (Dockerfile Basics)
 
-Record your constraint results here. See [../../../../HOW_IT_WORKS.md](../../../../HOW_IT_WORKS.md)
-for instructions on how to self-report.
+## Constraint results
 
-For each constraint, run the verification command from [constraints.md](constraints.md), observe
-the result, and record it here.
-
-| Constraint | Result | Evidence (command + what you observed) |
-|------------|--------|--------------------------------------|
-| C1: Dockerfile exists, correct base | | |
-| C2: Image builds successfully | | |
-| C3: Container starts, /health works | | |
-| C4: App works inside container | | |
-| C5: .dockerignore exists | | |
-| C6: Best practices followed | | |
+| Constraint | Result | Evidence |
+|------------|--------|----------|
+| C1 | PASS | cat Dockerfile → FROM python:3.11-slim |
+| C2 | PASS | docker build -t counter-app . → build completed successfully |
+| C3 | PASS | curl /health → HTTP 200, {"status":"ok"} |
+| C4 | PASS | curl / → Hello! You are visitor #2 |
+| C5 | PASS | .dockerignore excludes __pycache__, .git, *.pyc, *.md |
+| C6 | PASS | slim tag, WORKDIR, EXPOSE 5000, USER appuser |
 
 ## Overall
-
-- [ ] **CLEARED** — all constraints pass. Docker topic complete.
-- [ ] **Not cleared** — constraints above marked FAIL. Reviewing [../../../resources.md](../../../resources.md), will retry.
-
-## Notes (optional)
-
-Anything you want to note for yourself or your reviewer — blockers, assumptions, things you learned.
+✅ CLEARED — all constraints pass. Docker Level 1 complete.
