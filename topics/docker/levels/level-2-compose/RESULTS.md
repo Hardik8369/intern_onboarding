@@ -1,25 +1,15 @@
-# Results — Level 2 (Docker Compose)
+# Results — Docker Level 2 (Docker Compose)
 
-Record your constraint results here. See [../../../../HOW_IT_WORKS.md](../../../../HOW_IT_WORKS.md)
-for instructions on how to self-report.
+## Constraint results
 
-For each constraint, build and start with `docker compose up --build`, then run the verification
-command from [constraints.md](constraints.md). Record what you observed.
-
-| Constraint | Result | Evidence (command + what you observed) |
-|------------|--------|--------------------------------------|
-| C1: Two services defined | | |
-| C2: Both containers running | | |
-| C3: Web connects to Redis | | |
-| C4: Counter increments | | |
-| C5: Redis data persists | | |
-| C6: DNS networking works | | |
+| Constraint | Result | Evidence |
+|------------|--------|----------|
+| C1 | PASS | docker-compose.yml defines web (build) and redis (image) services |
+| C2 | PASS | docker compose ps → both containers Up |
+| C3 | PASS | curl /health → {"redis":"connected","status":"ok"} |
+| C4 | PASS | curl / three times → visitor #3, #4, #5 |
+| C5 | PASS | after docker compose down && up → visitor #6 (not reset) |
+| C6 | PASS | redis hostname resolves to 172.18.0.2 |
 
 ## Overall
-
-- [ ] **CLEARED** — all constraints pass. Docker topic complete.
-- [ ] **Not cleared** — constraints above marked FAIL. Reviewing [../../../resources.md](../../../resources.md), will retry.
-
-## Notes (optional)
-
-Anything you want to note for yourself or your reviewer — blockers, assumptions, things you learned.
+✅ CLEARED — all constraints pass. Docker Level 2 complete. Docker topic fully cleared!
